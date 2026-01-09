@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.intsoftware.Stamina.desktop.in
+data/org.intsoftware.Stamina.metainfo.xml.in
+data/org.intsoftware.Stamina.gschema.xml
+src/main.vala
+src/window.vala
+src/window.ui

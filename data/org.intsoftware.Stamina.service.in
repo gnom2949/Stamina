@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.intsoftware.Stamina
+Exec=@bindir@/stamina --gapplication-service

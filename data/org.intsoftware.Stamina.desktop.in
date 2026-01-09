@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=stamina
+Exec=stamina
+Icon=org.intsoftware.Stamina
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true
