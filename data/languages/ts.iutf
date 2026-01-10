@@ -1,0 +1,114 @@
+iutf:init:main {
+    #! TypeScript Language Configuration
+    title: "TypeScript Language Support"
+    version: "5.3"
+    versionL: 53L
+    versionF: 5.3
+    char: 'T'
+    authors: ["Microsoft", "TypeScript Team"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [typescript, javascript, programming, web]
+    }
+
+    language {
+        name: "TypeScript"
+        extensions: [".ts", ".tsx"]
+        mime_types: ["text/x-typescript", "application/typescript"]
+        color: "#2b7489"
+        icon: "lang-typescript-symbolic"
+
+        keywords: [
+            "abstract", "any", "as", "asserts", "async",
+            "await", "boolean", "break", "case", "catch",
+            "class", "const", "constructor", "continue",
+            "declare", "default", "delete", "do", "else",
+            "enum", "export", "extends", "false", "finally",
+            "for", "from", "function", "get", "if",
+            "implements", "import", "in", "infer", "instanceof",
+            "interface", "is", "keyof", "let", "module",
+            "namespace", "never", "new", "null", "number",
+            "object", "package", "private", "protected",
+            "public", "readonly", "require", "global", "return",
+            "set", "static", "string", "super", "switch",
+            "symbol", "this", "throw", "true", "try",
+            "type", "typeof", "undefined", "unique", "unknown",
+            "var", "void", "while", "with", "yield"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "++", "--",
+            "==", "===", "!=", "!==", ">", "<", ">=", "<=",
+            "&&", "||", "!", "?", ":", "=", "+=", "-=",
+            "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "=>", "...", "??", "?.",
+            "as", "is", "keyof", "typeof", "infer", "extends"
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "`", "@", "#", "!", "?", "<", ">"
+        ]
+
+        #! TypeScript features
+        features {
+            types: true
+            interfaces: true
+            generics: true
+            decorators: true
+            modules: true
+            namespaces: true
+            enums: true
+            type_guards: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 35  #! minutes
+            default_break_length: 7     #! minutes
+            productivity_multiplier: 1.1
+            track_type_definitions: true
+            auto_detect_tsconfig: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 35.0
+        last_session[tms]
+    }
+
+    readme: |
+        # TypeScript Language Configuration
+
+        TypeScript is JavaScript with syntax for types.
+        It's a strict superset of JavaScript that compiles to plain JavaScript.
+
+        ## Special Features
+
+        - Type definition tracking
+        - Interface and generic monitoring
+        - Compilation time optimization
+        - Type safety reminders
+
+        ## Productivity Tips
+
+        TypeScript development benefits from:
+        - Moderate sessions (35 minutes) for type design
+        - Regular breaks to prevent type fatigue
+        - Documentation reading during breaks
+        - Type refactoring suggestions
+
+        ## TSConfig Integration
+
+        Stamina can:
+        - Detect tsconfig.json projects
+        - Track compilation settings
+        - Monitor type checking times
+        - Suggest breaks during long compilations
+    |
+}

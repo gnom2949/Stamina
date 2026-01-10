@@ -1,0 +1,122 @@
+iutf:init:main {
+    #! Rust Language Configuration
+    title: "Rust Language Support"
+    version: "2024"
+    versionL: 2024L
+    versionF: 2024.0
+    char: 'R'
+    authors: ["Rust Foundation", "Mozilla"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [rust, programming, systems, safe]
+    }
+
+    language {
+        name: "Rust"
+        extensions: [".rs", ".rlib"]
+        mime_types: ["text/x-rust", "application/rust"]
+        color: "#dea584"
+        icon: "lang-rust-symbolic"
+
+        keywords: [
+            "as", "async", "await", "break", "const",
+            "continue", "crate", "dyn", "else", "enum",
+            "extern", "false", "fn", "for", "if",
+            "impl", "in", "let", "loop", "match",
+            "mod", "move", "mut", "pub", "ref",
+            "return", "self", "Self", "static", "struct",
+            "super", "trait", "true", "type", "unsafe",
+            "use", "where", "while", "abstract", "become",
+            "box", "do", "final", "macro", "override",
+            "priv", "try", "typeof", "unsized", "virtual",
+            "yield"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "&", "|", "^",
+            "!", "&&", "||", "<<", ">>", "==", "!=",
+            "<", ">", "<=", ">=", "@", "?", ".",
+            "..", "...", "..=", "=", "+=", "-=",
+            "*=", "/=", "%=", "&=", "|=", "^=",
+            "<<=", ">>=", "=>", "->", "<-", "::"
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "#", "!", "?", "@", "`"
+        ]
+
+        #! Rust features
+        features {
+            ownership: true
+            borrowing: true
+            lifetimes: true
+            traits: true
+            macros: true
+            unsafe_blocks: true
+            cargo: true
+            crates: true
+        }
+
+        #! Popular crates
+        popular_crates {
+            serde: true
+            tokio: true
+            actix: true
+            rocket: true
+            diesel: true
+            reqwest: true
+            clap: true
+            rayon: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 40  #! minutes
+            default_break_length: 10    #! minutes
+            productivity_multiplier: 1.3
+            track_cargo: true
+            auto_detect_cargo_toml: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 40.0
+        last_session[tms]
+    }
+
+    readme: |
+        # Rust Language Configuration
+
+        Rust is a multi-paradigm programming language focused on
+        performance, reliability, and productivity.
+
+        ## Special Features
+
+        - Ownership/borrowing pattern tracking
+        - Cargo package management
+        - Compilation time monitoring
+        - Memory safety reminders
+
+        ## Productivity Tips
+
+        Rust development benefits from:
+        - Moderate session length (40 minutes)
+        - Frequent breaks to think about ownership
+        - Documentation reading during breaks
+        - Compilation break suggestions
+
+        ## Cargo Integration
+
+        Stamina can:
+        - Detect Cargo.toml projects
+        - Track crate dependencies
+        - Monitor compilation times
+        - Suggest breaks during long builds
+    |
+}

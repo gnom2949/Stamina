@@ -1,0 +1,127 @@
+iutf:init:main {
+    #! Dart Language Configuration
+    title: "Dart Language Support"
+    version: 1.6
+    versionL: 1L
+    versionF: 1.6
+    char: 'D'
+    authors: ["Google", "Dart Team"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [dart, flutter, programming, language]
+    }
+
+    language {
+        name: "Dart"
+        extensions: [".dart"]
+        mime_types: ["application/dart", "text/x-dart"]
+        color: "#00B4AB"
+        icon: "lang-dart-symbolic"
+
+        keywords: [
+            "abstract", "as", "assert", "async", "await",
+            "break", "case", "catch", "class", "const",
+            "continue", "covariant", "default", "deferred",
+            "do", "dynamic", "else", "enum", "export",
+            "extends", "extension", "external", "factory",
+            "false", "final", "finally", "for", "Function",
+            "get", "hide", "if", "implements", "import",
+            "in", "interface", "is", "library", "mixin",
+            "new", "null", "on", "operator", "part",
+            "required", "rethrow", "return", "set", "show",
+            "static", "super", "switch", "sync", "this",
+            "throw", "true", "try", "typedef", "var",
+            "void", "while", "with", "yield"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "~/",
+            "++", "--", "==", "!=", ">", "<", ">=", "<=",
+            "&&", "||", "!", "=", "+=", "-=", "*=", "/=",
+            "~/=", "%=", "&=", "|=", "^=", "<<=", ">>=",
+            "??", "??=", "..", "?", "!", "as", "is", "in"
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "..", "...", "?", "!", "@", "#"
+        ]
+
+        types: [
+            "int", "double", "num", "String", "bool",
+            "List", "Set", "Map", "Runes", "Symbol",
+            "dynamic", "void", "Never", "Null", "Object"
+        ]
+
+        builtins: [
+            "print", "main", "import", "export", "library",
+            "part", "part of", "typedef", "mixin", "on",
+            "with", "extends", "implements", "abstract",
+            "external", "factory", "get", "set", "operator"
+        ]
+
+        #! Специальные конструкции для Flutter
+        flutter {
+            enabled: true
+            widgets: [
+                "StatelessWidget", "StatefulWidget", "BuildContext",
+                "Widget", "MaterialApp", "Scaffold", "AppBar",
+                "Text", "Center", "Column", "Row", "Container",
+                "ListView", "GridView", "Card", "Button"
+            ]
+
+            packages: [
+                "material", "cupertino", "widgets", "rendering",
+                "painting", "foundation", "gestures", "services"
+            ]
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 25  #! minutes
+            default_break_length: 5     #! minutes
+            productivity_multiplier: 1.0
+            track_dependencies: true
+            auto_detect_pubspec: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 25.0
+        last_session[tms]
+    }
+
+    readme: |
+        # Dart Language Configuration
+
+        This file configures Dart language support in Stamina.
+
+        Dart is a client-optimized language for fast apps on any platform.
+        Developed by Google, it's the primary language for Flutter.
+
+        ## Features
+
+        - Full keyword and operator support
+        - Flutter framework integration
+        - Pub package tracking
+        - Hot reload simulation
+
+        ## Usage
+
+        When tracking Dart sessions, Stamina will:
+        1. Auto-detect pubspec.yaml files
+        2. Track Flutter widget usage
+        3. Monitor package dependencies
+        4. Suggest optimal break intervals
+
+        ## Tips
+
+        Set longer sessions (30-45min) for Flutter development
+        due to build times and hot reload cycles.
+    |
+}

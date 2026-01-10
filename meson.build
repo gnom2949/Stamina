@@ -28,6 +28,7 @@ deps = [
     dependency('json-glib-1.0'),
 ]
 
+iutf_dep = dependency('iutf', required: false
 # Компиляция ресурсов
 gnome = import('gnome')
 

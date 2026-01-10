@@ -1,73 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.intsoftware.Stamina</id>
+  <id>org.intsoftware.stamina</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
-
+  <project_license>GPL-3.0-or-later</project_license>
   <name>Stamina</name>
-  <summary>Keep the summary shorter, between 10 and 35 characters</summary>
+  <summary>Focus timer with programming language tracking</summary>
   <description>
-    <p>No description</p>
+    <p>
+      Stamina is a productivity application that helps you maintain focus
+      using the Pomodoro Technique. It alternates between focus sessions
+      and breaks to optimize productivity.
+    </p>
+    <p>Key features:</p>
+    <ul>
+      <li>Customizable focus and break durations</li>
+      <li>Track time spent on different programming languages</li>
+      <li>Statistics and progress tracking</li>
+      <li>Dark/light theme support</li>
+      <li>Keyboard shortcuts for quick control</li>
+      <li>Notifications and sound alerts</li>
+      <li>Automatic session switching</li>
+    </ul>
   </description>
-
-  <developer id="tld.vendor">
-    <name>Developer name</name>
-  </developer>
-
-  <!-- Required: Should be a link to the upstream homepage for the component -->
-  <url type="homepage">https://example.org/</url>
-  <!-- Recommended: It is highly recommended for open-source projects to display the source code repository -->
-  <url type="vcs-browser">https://example.org/repository</url>
-  <!-- Should point to the software's bug tracking system, for users to report new bugs -->
-  <url type="bugtracker">https://example.org/issues</url>
-  <!-- Should link a FAQ page for this software, to answer some of the most-asked questions in detail -->
-  <!-- URLs of this type should point to a webpage where users can submit or modify translations of the upstream project -->
-  <url type="translate">https://example.org/translate</url>
-  <url type="faq">https://example.org/faq</url>
-  <!-- Should provide a web link to an online user's reference, a software manual or help page -->
-  <url type="help">https://example.org/help</url>
-  <!-- URLs of this type should point to a webpage showing information on how to donate to the described software project -->
-  <url type="donation">https://example.org/donate</url>
-  <!-- This could for example be an HTTPS URL to an online form or a page describing how to contact the developer -->
-  <url type="contact">https://example.org/contact</url>
-  <!-- URLs of this type should point to a webpage showing information on how to contribute to the described software project -->
-  <url type="contribute">https://example.org/contribute</url>
-
-  <translation type="gettext">stamina</translation>
-  <!-- All graphical applications having a desktop file must have this tag in the MetaInfo.
-     If this is present, appstreamcli compose will pull icons, keywords and categories from the desktop file. -->
-  <launchable type="desktop-id">org.intsoftware.Stamina.desktop</launchable>
-  <!-- Use the OARS website (https://hughsie.github.io/oars/generate.html) to generate these and make sure to use oars-1.1 -->
-  <content_rating type="oars-1.1" />
-
-  <!-- Applications should set a brand color in both light and dark variants like so -->
-  <branding>
-    <color type="primary" scheme_preference="light">#ff00ff</color>
-    <color type="primary" scheme_preference="dark">#993d3d</color>
-  </branding>
-
+  <developer_name>Your Name</developer_name>
+  <url type="homepage">https://gitlab.com/intsoftware/stamina</url>
+  <url type="bugtracker">https://gitlab.com/intsoftware/stamina/-/issues</url>
+  <url type="help">https://gitlab.com/intsoftware/stamina/-/wikis</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://example.org/example1.png</image>
-      <caption>A caption</caption>
+      <image>https://gitlab.com/intsoftware/stamina/-/raw/main/data/screenshots/main.png</image>
+      <caption>Main timer interface</caption>
     </screenshot>
     <screenshot>
-      <image>https://example.org/example2.png</image>
-      <caption>A caption</caption>
+      <image>https://gitlab.com/intsoftware/stamina/-/raw/main/data/screenshots/preferences.png</image>
+      <caption>Preferences dialog</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.com/intsoftware/stamina/-/raw/main/data/screenshots/statistics.png</image>
+      <caption>Statistics view</caption>
     </screenshot>
   </screenshots>
-
   <releases>
-    <release version="1.0.1" date="2024-01-18">
-      <url type="details">https://example.org/changelog.html#version_1.0.1</url>
-      <description translate="no">
-        <p>Release description</p>
+    <release version="1.0.0" date="2024-01-01">
+      <description>
+        <p>Initial release</p>
         <ul>
-          <li>List of changes</li>
-          <li>List of changes</li>
+          <li>Basic Pomodoro timer functionality</li>
+          <li>Programming language tracking</li>
+          <li>Customizable settings</li>
+          <li>GNOME HIG compliant interface</li>
         </ul>
       </description>
     </release>
   </releases>
-
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+  <languages>
+    <lang>en</lang>
+    <lang>ru</lang>
+    <lang>de</lang>
+    <lang>fr</lang>
+    <lang>es</lang>
+    <lang>it</lang>
+    <lang>pt</lang>
+    <lang>ja</lang>
+    <lang>zh_CN</lang>
+    <lang>zh_TW</lang>
+  </languages>
+  <provides>
+    <binary>stamina</binary>
+  </provides>
+  <custom>
+    <value key="x-appcenter-color-primary">#26a269</value>
+    <value key="x-appcenter-color-primary-text">#ffffff</value>
+    <value key="x-appcenter-suggested-price">0</value>
+  </custom>
 </component>

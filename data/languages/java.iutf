@@ -1,0 +1,127 @@
+iutf:init:main {
+    #! Java Language Configuration
+    title: "Java Language Support"
+    version: "21"
+    versionL: 21L
+    versionF: 21.0
+    char: 'J'
+    authors: ["Oracle", "OpenJDK"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [java, programming, enterprise, android]
+    }
+
+    language {
+        name: "Java"
+        extensions: [".java", ".jar", ".class", ".jsp"]
+        mime_types: ["text/x-java", "application/java"]
+        color: "#b07219"
+        icon: "lang-java-symbolic"
+
+        keywords: [
+            "abstract", "assert", "boolean", "break", "byte",
+            "case", "catch", "char", "class", "const",
+            "continue", "default", "do", "double", "else",
+            "enum", "extends", "final", "finally", "float",
+            "for", "goto", "if", "implements", "import",
+            "instanceof", "int", "interface", "long", "native",
+            "new", "package", "private", "protected", "public",
+            "return", "short", "static", "strictfp", "super",
+            "switch", "synchronized", "this", "throw", "throws",
+            "transient", "try", "void", "volatile", "while"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "++", "--",
+            "==", "!=", ">", "<", ">=", "<=",
+            "&&", "||", "!", "&", "|", "^", "~",
+            "<<", ">>", ">>>", "=", "+=", "-=",
+            "*=", "/=", "%=", "&=", "|=", "^=",
+            "<<=", ">>=", ">>>=", "?", ":", "->",
+            "instanceof"
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "@", "#"
+        ]
+
+        builtins: [
+            "Object", "String", "Integer", "Boolean", "Character",
+            "Byte", "Short", "Long", "Float", "Double",
+            "Void", "Class", "Package", "Enum", "Exception",
+            "Error", "Throwable", "Thread", "Runnable",
+            "System", "Math", "Collections", "Arrays", "List",
+            "Set", "Map", "Stream", "Optional", "LocalDate",
+            "ArrayList", "HashMap", "HashSet", "StringBuilder"
+        ]
+
+        #! Java platforms
+        platforms {
+            jdk: true
+            jre: true
+            android: true
+            spring: true
+            jakarta_ee: true
+            micronaut: true
+            quarkus: true
+        }
+
+        #! Build tools
+        build_tools {
+            maven: true
+            gradle: true
+            ant: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 45  #! minutes
+            default_break_length: 15    #! minutes
+            productivity_multiplier: 1.0
+            track_dependencies: true
+            auto_detect_build_file: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 45.0
+        last_session[tms]
+    }
+
+    readme: |
+        # Java Language Configuration
+
+        Java is a class-based, object-oriented programming language
+        designed for cross-platform applications.
+
+        ## Special Features
+
+        - Build tool integration (Maven/Gradle)
+        - Enterprise framework tracking
+        - Android development support
+        - JVM monitoring
+
+        ## Productivity Tips
+
+        Java development benefits from:
+        - Longer sessions (45min) due to compilation times
+        - Regular breaks to prevent burnout
+        - Code review during breaks
+        - Memory management reminders
+
+        ## Platform Detection
+
+        Stamina can detect:
+        - Spring Boot applications
+        - Android Studio projects
+        - Maven pom.xml files
+        - Gradle build scripts
+        - JUnit test suites
+    |
+}

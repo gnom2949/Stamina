@@ -1,0 +1,121 @@
+iutf:init:main {
+    #! C++ Language Configuration
+    title: "C++ Language Support"
+    version: "C++23"
+    versionL: 23L
+    versionF: 23.0
+    char: 'C'
+    authors: ["ISO/IEC", "Bjarne Stroustrup"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [cpp, programming, systems, game_dev]
+    }
+
+    language {
+        name: "C++"
+        extensions: [".cpp", ".hpp", ".cc", ".hh", ".cxx", ".hxx"]
+        mime_types: ["text/x-c++", "text/x-c++hdr"]
+        color: "#f34b7d"
+        icon: "lang-cpp-symbolic"
+
+        keywords: [
+            "alignas", "alignof", "and", "and_eq", "asm",
+            "atomic_cancel", "atomic_commit", "atomic_noexcept",
+            "auto", "bitand", "bitor", "bool", "break",
+            "case", "catch", "char", "char8_t", "char16_t",
+            "char32_t", "class", "compl", "concept", "const",
+            "consteval", "constexpr", "constinit", "const_cast",
+            "continue", "co_await", "co_return", "co_yield",
+            "decltype", "default", "delete", "do", "double",
+            "dynamic_cast", "else", "enum", "explicit", "export",
+            "extern", "false", "float", "for", "friend",
+            "goto", "if", "inline", "int", "long",
+            "mutable", "namespace", "new", "noexcept", "not",
+            "not_eq", "nullptr", "operator", "or", "or_eq",
+            "private", "protected", "public", "reflexpr", "register",
+            "reinterpret_cast", "requires", "return", "short",
+            "signed", "sizeof", "static", "static_assert",
+            "static_cast", "struct", "switch", "synchronized",
+            "template", "this", "thread_local", "throw", "true",
+            "try", "typedef", "typeid", "typename", "union",
+            "unsigned", "using", "virtual", "void", "volatile",
+            "wchar_t", "while", "xor", "xor_eq"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "++", "--",
+            "==", "!=", ">", "<", ">=", "<=",
+            "&&", "||", "!", "&", "|", "^", "~",
+            "<<", ">>", "=", "+=", "-=", "*=",
+            "/=", "%=", "&=", "|=", "^=", "<<=",
+            ">>=", "->", "->*", ".", ".*", "?:",
+            "sizeof", "alignof", "typeid", "new", "delete",
+            "throw", "co_await", "co_yield", "co_return"
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "::", "...", "#", "\\", "`"
+        ]
+
+        #! Стандартные библиотеки
+        standard_libraries {
+            stl: true
+            boost: true
+            qt: true
+            gtkmm: true
+            wxwidgets: true
+            opencv: true
+            eigen: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 60  #! minutes
+            default_break_length: 20    #! minutes
+            productivity_multiplier: 0.9
+            track_headers: true
+            auto_detect_cmake: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 60.0
+        last_session[tms]
+    }
+
+    readme: |
+        # C++ Language Configuration
+
+        C++ is a general-purpose programming language with
+        object-oriented, generic, and functional features.
+
+        ## Special Features
+
+        - Template metaprogramming tracking
+        - Memory management monitoring
+        - Build system integration
+        - Performance profiling reminders
+
+        ## Productivity Tips
+
+        C++ development requires:
+        - Long, focused sessions (60+ minutes)
+        - Regular breaks to prevent mental fatigue
+        - Documentation review during breaks
+        - Memory leak check reminders
+
+        ## Compilation Awareness
+
+        Stamina can:
+        - Detect CMake/Makefile projects
+        - Track compilation times
+        - Suggest break points during long builds
+        - Monitor template instantiation depth
+    |
+}

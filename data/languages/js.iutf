@@ -1,0 +1,130 @@
+iutf:init:main {
+    #! JavaScript Language Configuration
+    title: "JavaScript Language Support"
+    version: "ES2023"
+    versionL: 2023L
+    versionF: 2023.0
+    char: 'J'
+    authors: ["ECMA International", "TC39"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [javascript, web, programming, frontend]
+    }
+
+    language {
+        name: "JavaScript"
+        extensions: [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"]
+        mime_types: ["application/javascript", "text/javascript"]
+        color: "#f1e05a"
+        icon: "lang-javascript-symbolic"
+
+        keywords: [
+            "abstract", "arguments", "async", "await", "boolean",
+            "break", "byte", "case", "catch", "char",
+            "class", "const", "continue", "debugger", "default",
+            "delete", "do", "double", "else", "enum",
+            "eval", "export", "extends", "false", "final",
+            "finally", "float", "for", "function", "goto",
+            "if", "implements", "import", "in", "instanceof",
+            "int", "interface", "let", "long", "native",
+            "new", "null", "package", "private", "protected",
+            "public", "return", "short", "static", "super",
+            "switch", "synchronized", "this", "throw", "throws",
+            "transient", "true", "try", "typeof", "var",
+            "void", "volatile", "while", "with", "yield"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "++", "--",
+            "==", "===", "!=", "!==", ">", "<", ">=", "<=",
+            "&&", "||", "!", "?", ":", "=", "+=", "-=",
+            "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "=>", "...", "??", "?."
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "`", "@", "#", "\\"
+        ]
+
+        builtins: [
+            "Array", "Boolean", "Date", "Error", "Function",
+            "JSON", "Math", "Number", "Object", "RegExp",
+            "String", "Map", "Set", "WeakMap", "WeakSet",
+            "Promise", "Proxy", "Reflect", "Symbol",
+            "console", "document", "window", "navigator",
+            "localStorage", "sessionStorage", "fetch",
+            "setTimeout", "setInterval", "requestAnimationFrame"
+        ]
+
+        #! Runtime environments
+        environments {
+            nodejs: true
+            browser: true
+            deno: true
+            bun: true
+            electron: true
+        }
+
+        #! Popular frameworks
+        frameworks {
+            react: true
+            vue: true
+            angular: true
+            svelte: true
+            nextjs: true
+            nuxtjs: true
+            express: true
+            nestjs: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 25  #! minutes
+            default_break_length: 5     #! minutes
+            productivity_multiplier: 1.1
+            track_npm_packages: true
+            auto_detect_package_json: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 25.0
+        last_session[tms]
+    }
+
+    readme: |
+        # JavaScript Language Configuration
+
+        JavaScript is the programming language of the web.
+        It runs on browsers, servers, and everywhere in between.
+
+        ## Special Features
+
+        - Framework-specific session tracking
+        - npm/yarn package monitoring
+        - Browser DevTools integration
+        - TypeScript support
+
+        ## Productivity Tips
+
+        JavaScript development benefits from:
+        - Shorter, frequent sessions (Pomodoro)
+        - Regular testing breaks
+        - Documentation review during breaks
+        - Memory leak monitoring reminders
+
+        ## Framework Detection
+
+        Stamina can detect:
+        - React/Vue/Angular projects
+        - Node.js backend services
+        - Build configurations (webpack, vite)
+        - Testing frameworks (Jest, Mocha)
+    |
+}

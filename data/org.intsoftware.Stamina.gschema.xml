@@ -1,5 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="stamina">
-	<schema id="org.intsoftware.Stamina" path="/org/intsoftware/Stamina/">
-	</schema>
+<schemalist>
+  <schema id="org.intsoftware.stamina" path="/org/intsoftware/stamina/">
+    <!-- Таймер -->
+    <key name="work-duration" type="i">
+      <default>25</default>
+      <range min="1" max="120"/>
+      <summary>Focus duration</summary>
+      <description>Duration of focus sessions in minutes</description>
+    </key>
+
+    <key name="break-duration" type="i">
+      <default>5</default>
+      <range min="1" max="60"/>
+      <summary>Break duration</summary>
+      <description>Duration of short breaks in minutes</description>
+    </key>
+
+    <key name="long-break-duration" type="i">
+      <default>15</default>
+      <range min="5" max="120"/>
+      <summary>Long break duration</summary>
+      <description>Duration of long breaks in minutes</description>
+    </key>
+
+    <key name="sessions-before-long-break" type="i">
+      <default>4</default>
+      <range min="1" max="20"/>
+      <summary>Sessions before long break</summary>
+      <description>Number of focus sessions before a long break</description>
+    </key>
+
+    <!-- Состояние -->
+    <key name="remaining-seconds" type="i">
+      <default>1500</default>
+      <summary>Remaining seconds</summary>
+      <description>Seconds remaining in current timer</description>
+    </key>
+
+    <key name="total-seconds" type="i">
+      <default>1500</default>
+      <summary>Total seconds</summary>
+      <description>Total seconds in current timer interval</description>
+    </key>
+
+    <key name="is-work-time" type="b">
+      <default>true</default>
+      <summary>Is work time</summary>
+      <description>Whether current interval is work time</description>
+    </key>
+
+    <key name="is-running" type="b">
+      <default>false</default>
+      <summary>Timer running</summary>
+      <description>Whether timer is currently running</description>
+    </key>
+
+    <key name="completed-sessions" type="i">
+      <default>0</default>
+      <summary>Completed sessions</summary>
+      <description>Number of completed focus sessions</description>
+    </key>
+
+    <key name="completed-breaks" type="i">
+      <default>0</default>
+      <summary>Completed breaks</summary>
+      <description>Number of completed breaks</description>
+    </key>
+
+    <key name="last-saved" type="s">
+      <default>""</default>
+      <summary>Last saved</summary>
+      <description>Timestamp of last state save</description>
+    </key>
+
+    <!-- Автозапуск -->
+    <key name="auto-start-break" type="b">
+      <default>true</default>
+      <summary>Auto-start break</summary>
+      <description>Automatically start break after work</description>
+    </key>
+
+    <key name="auto-start-work" type="b">
+      <default>false</default>
+      <summary>Auto-start work</summary>
+      <description>Automatically start work after break</description>
+    </key>
+
+    <key name="auto-start-timer" type="b">
+      <default>false</default>
+      <summary>Auto-start timer</summary>
+      <description>Automatically start next timer</description>
+    </key>
+
+    <!-- Уведомления -->
+    <key name="enable-notifications" type="b">
+      <default>true</default>
+      <summary>Enable notifications</summary>
+      <description>Show notifications for timer events</description>
+    </key>
+
+    <key name="sound-notifications" type="b">
+      <default>true</default>
+      <summary>Sound notifications</summary>
+      <description>Play sound for notifications</description>
+    </key>
+
+    <key name="warning-notification" type="b">
+      <default>true</default>
+      <summary>Warning notification</summary>
+      <description>Show notification when one minute remains</description>
+    </key>
+
+    <!-- Внешний вид -->
+    <key name="color-scheme" type="s">
+      <default>default</default>
+      <choices>
+        <choice value='default'/>
+        <choice value='light'/>
+        <choice value='dark'/>
+      </choices>
+      <summary>Color scheme</summary>
+      <description>Application color scheme</description>
+    </key>
+
+    <key name="show-progress-bar" type="b">
+      <default>true</default>
+      <summary>Show progress bar</summary>
+      <description>Display progress bar below timer</description>
+    </key>
+
+    <key name="enable-animations" type="b">
+      <default>true</default>
+      <summary>Enable animations</summary>
+      <description>Enable interface animations</description>
+    </key>
+
+    <!-- Окно -->
+    <key name="window-width" type="i">
+      <default>400</default>
+      <range min="300" max="1200"/>
+      <summary>Window width</summary>
+      <description>Width of the main window</description>
+    </key>
+
+    <key name="window-height" type="i">
+      <default>500</default>
+      <range min="400" max="800"/>
+      <summary>Window height</summary>
+      <description>Height of the main window</description>
+    </key>
+
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Window maximized</summary>
+      <description>Whether window is maximized</description>
+    </key>
+
+    <!-- Языки программирования (все по умолчанию включены) -->
+    <key name="language-python" type="b">
+      <default>true</default>
+      <summary>Python tracking</summary>
+      <description>Track sessions for Python</description>
+    </key>
+
+    <key name="language-javascript" type="b">
+      <default>true</default>
+      <summary>JavaScript tracking</summary>
+      <description>Track sessions for JavaScript</description>
+    </key>
+
+  </schema>
 </schemalist>

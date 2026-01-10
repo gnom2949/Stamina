@@ -1,0 +1,125 @@
+iutf:init:main {
+    #! Go Language Configuration
+    title: "Go Language Support"
+    version: "1.21"
+    versionL: 121L
+    versionF: 1.21
+    char: 'G'
+    authors: ["Google", "Go Team"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [go, golang, programming, concurrent]
+    }
+
+    language {
+        name: "Go"
+        extensions: [".go"]
+        mime_types: ["text/x-go", "application/go"]
+        color: "#00ADD8"
+        icon: "lang-go-symbolic"
+
+        keywords: [
+            "break", "case", "chan", "const", "continue",
+            "default", "defer", "else", "fallthrough", "for",
+            "func", "go", "goto", "if", "import",
+            "interface", "map", "package", "range", "return",
+            "select", "struct", "switch", "type", "var"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "%", "&", "|", "^",
+            "<<", ">>", "&^", "++", "--", "+=", "-=",
+            "*=", "/=", "%=", "&=", "|=", "^=",
+            "<<=", ">>=", "&^=", "==", "!=", "<",
+            "<=", ">", ">=", "&&", "||", "!", "<-", ":="
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "...", "#"
+        ]
+
+        builtins: [
+            "append", "cap", "close", "complex", "copy",
+            "delete", "imag", "len", "make", "new",
+            "panic", "print", "println", "real", "recover",
+            "bool", "byte", "complex128", "complex64",
+            "error", "float32", "float64", "int", "int16",
+            "int32", "int64", "int8", "rune", "string",
+            "uint", "uint16", "uint32", "uint64", "uint8",
+            "uintptr"
+        ]
+
+        #! Go features
+        features {
+            goroutines: true
+            channels: true
+            interfaces: true
+            structs: true
+            packages: true
+            modules: true
+            testing: true
+        }
+
+        #! Popular packages
+        popular_packages {
+            net_http: true
+            encoding_json: true
+            fmt: true
+            io: true
+            os: true
+            sync: true
+            time: true
+            context: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 30  #! minutes
+            default_break_length: 5     #! minutes
+            productivity_multiplier: 1.4
+            track_go_mod: true
+            auto_detect_go_files: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 30.0
+        last_session[tms]
+    }
+
+    readme: |
+        # Go Language Configuration
+
+        Go is an open-source programming language that makes it
+        easy to build simple, reliable, and efficient software.
+
+        ## Special Features
+
+        - Goroutine and channel tracking
+        - Module dependency monitoring
+        - Fast compilation time support
+        - Concurrency pattern reminders
+
+        ## Productivity Tips
+
+        Go development is optimized for:
+        - Short, focused sessions (30 minutes)
+        - Minimal breaks due to fast compile times
+        - Concurrent programming thinking
+        - Standard library exploration during breaks
+
+        ## Go Modules
+
+        Stamina can:
+        - Detect go.mod projects
+        - Track module dependencies
+        - Monitor test execution times
+        - Suggest breaks during network operations
+    |
+}

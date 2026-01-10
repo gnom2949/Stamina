@@ -25,7 +25,24 @@ namespace Stamina {
         private Gtk.Button reset_button;
         private Gtk.Button short_break_button;
         private Gtk.Button long_break_button;
-
+        private LanguageLoader language_loader;
+        private Gtk.Button random_code_button;
+        private Gtk.Button simulate_typing_button;
+        private Gtk.Button clear_button;
+        private Gtk.TextView code_textview;
+        private Gtk.ComboBoxText language_combobox;
+        private Gtk.Entry quick_input_entry;
+        private Gtk.Button suggest_word_button;
+        private SessionManager session_manager;
+        private Gtk.Stack main_stack;
+        private Adw.ViewStack view_stack;
+        private Gtk.DropDown language_dropdown;
+        private Gtk.Entry project_entry;
+        private Gtk.TextView notes_textview;
+        private Gtk.Button start_coding_button;
+        private Gtk.Button stop_coding_button;
+        private Gtk.Label current_session_label;
+        private string? current_session_id = null;
         private Timer timer;
         private Settings settings;
 
@@ -36,6 +53,7 @@ namespace Stamina {
                 title: _("Stamina"),
                 icon_name: "org.intsoftware.stamina"
             );
+
 
             settings = new Settings (Config.APP_ID);
             timer = new Timer (settings);
@@ -55,7 +73,96 @@ namespace Stamina {
             // загрузка состояния таймера
             timer.load_state();
             update_display();
+
+            // инициализация LanguageLoader
+            language_loader = LanguageLoader.get_default();
+            language_loader.all_languages_loaded.connect (on_languages_loaded);
+
+            // загружаем языки асинхронно
+            load_languages_async.begin();
         }
+
+        private async void load_languages_async()
+        {
+            yield language_loader.load_all_languages();
+        } 
+
+        private void on_languages_loaded()
+        {
+            debug ("All lang loaded");
+            populate_language_combobox();
+        }
+
+        private void populate_language_combobox () {
+            language_combobox.remove_all ();
+            
+            var languages = language_loader.get_available_languages ();
+            if (languages.is_empty) {
+                language_combobox.append ("none", _("No languages loaded"));
+                language_combobox.active_id = "none";
+                random_code_button.sensitive = false;
+                simulate_typing_button.sensitive = false;
+                return;
+            }
+            
+            foreach (var lang_id in languages) {
+                var language = language_loader.get_language (lang_id);
+                if (language != null) {
+                    language_combobox.append (lang_id, language.name);
+                }
+            }
+            
+            // Устанавливаем язык по умолчанию
+            var default_lang = settings.get_string ("default-programming-language");
+            if (default_lang != "" && language_combobox.get_active_id () != default_lang) {
+                language_combobox.active_id = default_lang;
+            } else {
+                language_combobox.active = 0;
+            }
+            
+            random_code_button.sensitive = true;
+            simulate_typing_button.sensitive = true;
+        }
+
+         // Добавляем горячие клавиши
+        private void setup_programming_shortcuts () {
+            var controller = new Gtk.EventControllerKey ();
+            
+            controller.key_pressed.connect ((keyval, keycode, state) => {
+                var modifiers = state & Gtk.accelerator_get_default_mod_mask ();
+                
+                // Ctrl+G - сгенерировать случайный код
+                if (keyval == Gdk.Key.g && modifiers == Gdk.ModifierType.CONTROL_MASK) {
+                    on_generate_random_code ();
+                    return true;
+                }
+                
+                // Ctrl+S - предложить слово
+                if (keyval == Gdk.Key.s && modifiers == Gdk.ModifierType.CONTROL_MASK) {
+                    on_suggest_word ();
+                    return true;
+                }
+                
+                // Ctrl+T - симуляция набора
+                if (keyval == Gdk.Key.t && modifiers == Gdk.ModifierType.CONTROL_MASK) {
+                    on_simulate_typing ();
+                    return true;
+                }
+                
+                // Ctrl+L - очистить
+                if (keyval == Gdk.Key.l && modifiers == Gdk.ModifierType.CONTROL_MASK) {
+                    on_clear_code ();
+                    return true;
+                }
+                
+                return false;
+            });
+            
+            code_textview.add_controller (controller);
+            quick_input_entry.add_controller (controller);
+        }
+    }
+}
 
         private void build_ui()
         {
@@ -96,6 +203,35 @@ namespace Stamina {
                 css_classes = {"title-1"}
             };
 
+            // основной стек
+            main_stack = new Gtk.Stack()
+            {
+                transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT,
+                transition_duration = 200
+            };
+            view_stack = new Adw.ViewStack();
+
+             var timer_view = build_timer_view ();
+            view_stack.add_titled (timer_view, "timer", _("Timer"));
+            view_stack.add_titled (build_programming_view (), "programming", _("Programming"));
+            view_stack.add_titled (build_statistics_view (), "statistics", _("Statistics"));
+            
+            var view_switcher = new Adw.ViewSwitcher () {
+                stack = view_stack,
+                policy = Adw.ViewSwitcherPolicy.WIDE
+            };
+            
+            var header_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            header_box.append (header);
+            header_box.append (view_switcher);
+            
+            // Добавляем стек в основное содержимое
+            var main_content = new Adw.ToolbarView ();
+            main_content.add_top_bar (header_box);
+            main_content.set_content (view_stack);
+            
+            content = main_content;
+
             // таймер
             timer_label = new Gtk.Label ("25.00")
             {
@@ -123,15 +259,15 @@ namespace Stamina {
 
             start_button = new Gtk.Button.with_label (_("Start"));
             start_button.add_css_class ("suggested-action");
-            start_button.tooltip_text = _("Start timer (Ctrl+S");
+            start_button.tooltip_text = _("Start timer (Ctrl+S"));
 
             pause_button = new Gtk.Button.with_label (_("Pause"));
             pause_button.sensitive = false;
-            pause_button.tooltip_text = _("Pause timer (Ctrl+P");
+            pause_button.tooltip_text = _("Pause timer (Ctrl+P"));
 
             reset_button = new Gtk.Button.with_label (_("Reset"));
-            reset_button.tooltip_text = _("Reset timer (Ctrl+R"));
 
+            reset_button.tooltip_text = _("Reset timer (Ctrl+R"));
             timer_button_box.append (start_button);
             timer_button_box.append (pause_button);
             timer_button_box.append (reset_button);
@@ -173,6 +309,113 @@ namespace Stamina {
 
             // настройка доступности
             setup_accessibility();
+        }
+
+        private Gtk.Widget build_programming_view () {
+            var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+            main_box.margin_top = 12;
+            main_box.margin_bottom = 12;
+            main_box.margin_start = 12;
+            main_box.margin_end = 12;
+            
+            // Панель выбора языка
+            var language_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            language_box.halign = Gtk.Align.CENTER;
+            
+            var language_label = new Gtk.Label (_("Language:")) {
+                halign = Gtk.Align.END
+            };
+            
+            language_combobox = new Gtk.ComboBoxText () {
+                halign = Gtk.Align.START,
+                valign = Gtk.Align.CENTER,
+                hexpand = true
+            };
+            
+            // Быстрый ввод
+            var quick_input_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            quick_input_box.margin_top = 6;
+            quick_input_box.halign = Gtk.Align.FILL;
+            
+            quick_input_entry = new Gtk.Entry () {
+                placeholder_text = _("Type code here or use suggestions..."),
+                hexpand = true
+            };
+            
+            suggest_word_button = new Gtk.Button () {
+                label = _("Suggest"),
+                tooltip_text = _("Suggest random programming word")
+            };
+            suggest_word_button.clicked.connect (on_suggest_word);
+            
+            quick_input_box.append (quick_input_entry);
+            quick_input_box.append (suggest_word_button);
+            
+            // Основное текстовое поле для кода
+            var scrolled = new Gtk.ScrolledWindow () {
+                hexpand = true,
+                vexpand = true,
+                margin_top = 12,
+                margin_bottom = 12
+            };
+            
+            code_textview = new Gtk.TextView () {
+                wrap_mode = Gtk.WrapMode.WORD_CHAR,
+                monospace = true,
+                top_margin = 6,
+                bottom_margin = 6,
+                left_margin = 6,
+                right_margin = 6
+            };
+            
+            // Настраиваем подсветку синтаксиса
+            setup_syntax_highlighting ();
+            
+            scrolled.set_child (code_textview);
+            
+            // Панель кнопок
+            var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            button_box.halign = Gtk.Align.CENTER;
+            button_box.margin_top = 6;
+            
+            random_code_button = new Gtk.Button.with_label (_("Generate Random Code"));
+            random_code_button.tooltip_text = _("Generate random code snippet in selected language");
+            random_code_button.clicked.connect (on_generate_random_code);
+            
+            simulate_typing_button = new Gtk.Button.with_label (_("Simulate Typing"));
+            simulate_typing_button.tooltip_text = _("Simulate typing in selected language");
+            simulate_typing_button.clicked.connect (on_simulate_typing);
+            
+            clear_button = new Gtk.Button.with_label (_("Clear"));
+            clear_button.tooltip_text = _("Clear code editor");
+            clear_button.clicked.connect (on_clear_code);
+            
+            button_box.append (random_code_button);
+            button_box.append (simulate_typing_button);
+            button_box.append (clear_button);
+            
+            // Информационная панель
+            var info_label = new Gtk.Label (_("Use this area to practice programming while tracking your focus time.")) {
+                wrap = true,
+                justify = Gtk.Justification.CENTER,
+                css_classes = {"dim-label"},
+                margin_top = 12
+            };
+            
+            // Собираем всё вместе
+            language_box.append (language_label);
+            language_box.append (language_combobox);
+            
+            main_box.append (language_box);
+            main_box.append (quick_input_box);
+            main_box.append (scrolled);
+            main_box.append (button_box);
+            main_box.append (info_label);
+            
+            // Заполняем комбобокс
+            populate_language_combobox ();
+            
+            return main_box;
         }
 
         private void connect_signals()

@@ -1,10 +1,14 @@
 [Desktop Entry]
-Name=stamina
+Name=Stamina
+Comment=Focus timer with programming language tracking
+Keywords=timer;productivity;focus;pomodoro;programming;
 Exec=stamina
-Icon=org.intsoftware.Stamina
+Icon=io.gitlab.intsoftware.stamina
 Terminal=false
 Type=Application
-Categories=Utility;
-Keywords=GTK;
+Categories=Utility;Productivity;
 StartupNotify=true
-DBusActivatable=true
+StartupWMClass=stamina
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
+X-GNOME-FullName=Stamina Timer

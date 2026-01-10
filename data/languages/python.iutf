@@ -1,0 +1,124 @@
+iutf:init:main {
+    #! Python Language Configuration
+    title: "Python Language Support"
+    version: 3.11
+    versionL: 311L
+    versionF: 3.11
+    char: 'P'
+    authors: ["Python Software Foundation"]
+
+    meta {
+        CI: Stable
+        created[tms]
+        public: true
+        tags: [python, programming, scripting, data_science]
+    }
+
+    language {
+        name: "Python"
+        extensions: [".py", ".pyw", ".pyc", ".pyo", ".pyd"]
+        mime_types: ["text/x-python", "application/x-python"]
+        color: "#3572A5"
+        icon: "lang-python-symbolic"
+
+        keywords: [
+            "False", "None", "True", "and", "as",
+            "assert", "async", "await", "break", "class",
+            "continue", "def", "del", "elif", "else",
+            "except", "finally", "for", "from", "global",
+            "if", "import", "in", "is", "lambda",
+            "nonlocal", "not", "or", "pass", "raise",
+            "return", "try", "while", "with", "yield"
+        ]
+
+        operators: [
+            "+", "-", "*", "/", "//", "%", "**",
+            "==", "!=", ">", "<", ">=", "<=",
+            "and", "or", "not", "in", "is",
+            "=", "+=", "-=", "*=", "/=", "//=",
+            "%=", "**=", "&=", "|=", "^=",
+            "<<=", ">>=", ":="
+        ]
+
+        punctuation: [
+            "(", ")", "{", "}", "[", "]", ";", ":",
+            ",", ".", "@", "#", "\\", "`", "..."
+        ]
+
+        builtins: [
+            "abs", "all", "any", "ascii", "bin",
+            "bool", "breakpoint", "bytearray", "bytes",
+            "callable", "chr", "classmethod", "compile",
+            "complex", "delattr", "dict", "dir", "divmod",
+            "enumerate", "eval", "exec", "filter", "float",
+            "format", "frozenset", "getattr", "globals",
+            "hasattr", "hash", "help", "hex", "id",
+            "input", "int", "isinstance", "issubclass",
+            "iter", "len", "list", "locals", "map",
+            "max", "memoryview", "min", "next", "object",
+            "oct", "open", "ord", "pow", "print",
+            "property", "range", "repr", "reversed",
+            "round", "set", "setattr", "slice", "sorted",
+            "staticmethod", "str", "sum", "super", "tuple",
+            "type", "vars", "zip", "__import__"
+        ]
+
+        #! Popular frameworks
+        frameworks {
+            django: true
+            flask: true
+            fastapi: true
+            numpy: true
+            pandas: true
+            tensorflow: true
+            pytorch: true
+            matplotlib: true
+            scikit_learn: true
+        }
+
+        #! Настройки для таймера
+        timer_settings {
+            default_session_length: 30  #! minutes
+            default_break_length: 10    #! minutes
+            productivity_multiplier: 1.2
+            track_imports: true
+            auto_detect_requirements: true
+        }
+    }
+
+    stats {
+        total_sessions: 0
+        total_hours: 0.0
+        average_session: 30.0
+        last_session[tms]
+    }
+
+    readme: |
+        # Python Language Configuration
+
+        Python is a high-level, interpreted programming language
+        known for its readability and versatility.
+
+        ## Special Features
+
+        - Data science package tracking
+        - Web framework detection
+        - Virtual environment monitoring
+        - Jupyter notebook support
+
+        ## Productivity Tips
+
+        Python sessions benefit from:
+        - Longer focus periods (30+ min) for complex algorithms
+        - Regular breaks to prevent eye strain from reading
+        - Documentation review during breaks
+
+        ## Framework Integration
+
+        Stamina can detect:
+        - Django projects (manage.py)
+        - Flask apps (app.py)
+        - Data science notebooks (.ipynb)
+        - Package requirements (requirements.txt)
+    |
+}
